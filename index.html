@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Telephone Number Validator</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-12 p-2">
+        <div class="border rounded m-3 p-2">
+          <h1>Phone Validator</h1>
+          <input type="text" id="inputString" placeholder="1 555 555 5555" class="mt-sm-2 w-100 m-1">
+          <button onclick="checkPhone()" class="btn btn-outline-success mt-sm-2 w-100 m-1">Verificar</button>
+        </div>
+      </div>
+    </div>
+  
+
+  <div id="result" class="row justify-content-center"></div>
+</div>
+ 
+
+  <script>
+    function validPhone(str) {
+        let reg = /^(1\s?)?(\(\d{3}\)|\d{3})[-.\s]?\d{3}[-.\s]?\d{4}$/;
+        let cond = reg.test(str);
+        if (cond == true){
+            return true
+        } else{
+            return false
+        }
+    }
+
+    function checkPhone() {
+      const inputElement = document.getElementById('inputString');
+      const resultElement = document.getElementById('result');
+      const inputValue = inputElement.value;
+
+      
+      if(inputValue === ''){
+        resultElement.textContent = 'It\'s Empty';
+        resultElement.style.color = '#fcba03';
+      } else if (validPhone(inputValue) == true) {
+        resultElement.textContent = 'Valid';
+        resultElement.style.color = 'green';
+      } else {
+        resultElement.textContent = 'Invalid';
+        resultElement.style.color = 'red';
+      }
+    }
+  </script>
+
+</body>
+</html>
